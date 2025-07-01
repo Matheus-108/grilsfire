@@ -12,7 +12,7 @@ export function LandingScreen() {
       <Card className="w-full max-w-sm mx-auto bg-card border-primary/20 shadow-lg shadow-primary/20 rounded-2xl">
         <div className="relative animate-glow rounded-t-2xl">
           <Image
-            src="https://placehold.co/400x600.png"
+            src="https://i.imgur.com/F7qaikM.jpeg"
             alt="Letycia"
             width={400}
             height={600}
