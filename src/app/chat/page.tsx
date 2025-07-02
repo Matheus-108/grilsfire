@@ -11,7 +11,6 @@ import { useToast } from "@/hooks/use-toast";
 export default function ChatPage() {
   const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
   const [whatsappNumber, setWhatsappNumber] = useState('');
-  const [pixCode, setPixCode] = useState('');
   const { toast } = useToast();
 
   const paymentDetails = 'suportepro29@gmail.com'; // As defined in the AI prompt
@@ -121,23 +120,12 @@ export default function ChatPage() {
                 </Button>
               </div>
             </div>
-            
-            <div>
-              <label className="text-sm font-semibold text-gray-400">Código de confirmação do PIX:</label>
-              <Input
-                value={pixCode}
-                onChange={(e) => setPixCode(e.target.value)}
-                placeholder="Cole aqui o código do seu PIX..."
-                className="bg-[#2d2d2d] border-gray-600 text-white mt-1 h-12"
-              />
-              <p className="text-xs text-gray-500 mt-1">*Digite qualquer código após fazer o PIX</p>
-            </div>
           </div>
 
           <Button
             onClick={handlePaymentConfirmation}
             size="lg"
-            className="w-full mt-6 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-bold text-lg h-14 disabled:opacity-50 disabled:cursor-not-allowed hover:from-fuchsia-700 hover:to-pink-700"
+            className="w-full mt-6 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-bold text-lg h-14 hover:from-fuchsia-700 hover:to-pink-700"
           >
             <span className="mr-2">💖</span> Confirmar Pagamento - R$ 10,00
           </Button>
