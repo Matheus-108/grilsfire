@@ -22,15 +22,15 @@ type Model = {
 };
 
 const models: Model[] = [
-  { name: 'Camila Santos', photos: 889, videos: 106, conversion: 98.2, imageUrl: 'https://i.imgur.com/4AtEyYU.jpeg', isOnline: true },
-  { name: 'Ana Lopes', photos: 760, videos: 88, conversion: 97.5, imageUrl: 'https://i.imgur.com/7zr5mSM.png', packImages: ['https://i.imgur.com/IESQs9e.png', 'https://i.imgur.com/iyZQuMq.png', 'https://i.imgur.com/oaBNCCP.png'] },
-  { name: 'Júlia Lima', photos: 920, videos: 112, conversion: 99.1, imageUrl: 'https://i.imgur.com/NrDNobZ.png', isOnline: true, packImages: ['https://i.imgur.com/kbg9g66.png', 'https://i.imgur.com/297lNzN.png', 'https://i.imgur.com/jjTu1AP.png'] },
-  { name: 'Larissa Melo', photos: 815, videos: 97, conversion: 96.4, imageUrl: 'https://i.imgur.com/Tr56Ory.png', packImages: ['https://i.imgur.com/xcqQIRW.png', 'https://i.imgur.com/NJz3OmP.png', 'https://i.imgur.com/jGbAsFW.png'] },
-  { name: 'Bianca Cruz', photos: 780, videos: 102, conversion: 97.8, imageUrl: 'https://i.imgur.com/mkCX0mf.png', isOnline: true, packImages: ['https://i.imgur.com/tPGHIkE.png', 'https://i.imgur.com/0WW0nMH.png', 'https://i.imgur.com/8CnzcQ9.png'] },
-  { name: 'Natália Reis', photos: 833, videos: 93, conversion: 98.6, imageUrl: 'https://i.imgur.com/oSObgKj.png', packImages: ['https://i.imgur.com/Ckw8Dgd.png', 'https://i.imgur.com/ammIMac.png', 'https://i.imgur.com/t6tTf7H.png'] },
-  { name: 'Rebeca Martins', photos: 802, videos: 84, conversion: 95.2, imageUrl: 'https://i.imgur.com/ZGaW7JT.png', isOnline: true },
-  { name: 'Vanessa Silva', photos: 945, videos: 120, conversion: 99.8, imageUrl: 'https://i.imgur.com/ytt7dqR.png', isOnline: true },
-  { name: 'Isabela Rocha', photos: 879, videos: 100, conversion: 96.9, imageUrl: 'https://i.imgur.com/kKyoKlq.png', packImages: ['https://i.imgur.com/DYeU0Hz.png', 'https://i.imgur.com/sCthPlq.png', 'https://i.imgur.com/BhFifQ8.png'] },
+  { name: 'Camila Santos', photos: 889, videos: 106, conversion: 98.2, imageUrl: 'https://i.imgur.com/4AtEyYUh.jpeg', isOnline: true },
+  { name: 'Ana Lopes', photos: 760, videos: 88, conversion: 97.5, imageUrl: 'https://i.imgur.com/7zr5mSMh.png', packImages: ['https://i.imgur.com/IESQs9eh.png', 'https://i.imgur.com/iyZQuMqh.png', 'https://i.imgur.com/oaBNCCPh.png'] },
+  { name: 'Júlia Lima', photos: 920, videos: 112, conversion: 99.1, imageUrl: 'https://i.imgur.com/NrDNobZh.png', isOnline: true, packImages: ['https://i.imgur.com/kbg9g66h.png', 'https://i.imgur.com/297lNzNh.png', 'https://i.imgur.com/jjTu1APh.png'] },
+  { name: 'Larissa Melo', photos: 815, videos: 97, conversion: 96.4, imageUrl: 'https://i.imgur.com/Tr56Oryh.png', packImages: ['https://i.imgur.com/xcqQIRWh.png', 'https://i.imgur.com/NJz3OmPh.png', 'https://i.imgur.com/jGbAsFWh.png'] },
+  { name: 'Bianca Cruz', photos: 780, videos: 102, conversion: 97.8, imageUrl: 'https://i.imgur.com/mkCX0mfh.png', isOnline: true, packImages: ['https://i.imgur.com/tPGHIkEh.png', 'https://i.imgur.com/0WW0nMHh.png', 'https://i.imgur.com/8CnzcQ9h.png'] },
+  { name: 'Natália Reis', photos: 833, videos: 93, conversion: 98.6, imageUrl: 'https://i.imgur.com/oSObgKjh.png', packImages: ['https://i.imgur.com/Ckw8Dgdh.png', 'https://i.imgur.com/ammIMach.png', 'https://i.imgur.com/t6tTf7Hh.png'] },
+  { name: 'Rebeca Martins', photos: 802, videos: 84, conversion: 95.2, imageUrl: 'https://i.imgur.com/ZGaW7JTh.png', isOnline: true },
+  { name: 'Vanessa Silva', photos: 945, videos: 120, conversion: 99.8, imageUrl: 'https://i.imgur.com/ytt7dqRh.png', isOnline: true },
+  { name: 'Isabela Rocha', photos: 879, videos: 100, conversion: 96.9, imageUrl: 'https://i.imgur.com/kKyoKlqh.png', packImages: ['https://i.imgur.com/DYeU0Hzh.png', 'https://i.imgur.com/sCthPlqh.png', 'https://i.imgur.com/BhFifQ8h.png'] },
 ];
 
 const PackModal = ({ model, onClose }: { model: Model; onClose: () => void }) => {
