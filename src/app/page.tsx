@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Folder, MessageCircle, Camera, Video, TrendingUp, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { Folder, MessageCircle, Camera, Video, TrendingUp, ChevronLeft, ChevronRight, X, Star, CheckCircle2 } from 'lucide-react';
 import { ParticlesBackground } from '@/components/particles-background';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -51,6 +51,7 @@ const PackModal = ({ model, onClose }: { model: Model; onClose: () => void }) =>
   return (
     <Dialog open={true} onOpenChange={(isOpen) => !isOpen && onClose()}>
       <DialogContent className="bg-[#1f2128] border-none text-white p-0 max-w-sm w-full rounded-2xl overflow-hidden">
+        {/* PHOTOS */}
         <div className="relative aspect-[3/4]">
           <Image
             src={model.packImages[currentIndex]}
@@ -72,28 +73,51 @@ const PackModal = ({ model, onClose }: { model: Model; onClose: () => void }) =>
             <X size={20} />
           </button>
         </div>
+
         <div className="p-5 flex flex-col gap-4">
+          {/* NAME */}
           <h2 className="text-2xl font-bold">{model.name}</h2>
+          
+          {/* STARS & VALIDATION */}
+          <div className="flex flex-col gap-2 -mt-2 mb-2">
+            <div className="flex items-center gap-1 text-amber-400">
+              <Star fill="currentColor" size={16} />
+              <Star fill="currentColor" size={16} />
+              <Star fill="currentColor" size={16} />
+              <Star fill="currentColor" size={16} />
+              <Star fill="currentColor" size={16} />
+            </div>
+            <div className="flex items-center gap-2 text-sm text-green-400 font-semibold">
+              <CheckCircle2 size={16} />
+              <span>Conteúdo Validado</span>
+            </div>
+          </div>
+
+          {/* PHOTO/VIDEO COUNT */}
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-[#2a2d35] p-4 rounded-lg text-center">
+            <div className="bg-[#2a2d35] p-4 rounded-lg text-center border-t-2 border-red-500/50 shadow-lg shadow-red-500/10">
               <Camera className="mx-auto mb-2 text-red-400" size={24} />
               <p className="text-lg font-bold">{model.photos}</p>
               <p className="text-xs text-gray-400">Fotos Exclusivas</p>
             </div>
-            <div className="bg-[#2a2d35] p-4 rounded-lg text-center">
+            <div className="bg-[#2a2d35] p-4 rounded-lg text-center border-t-2 border-red-500/50 shadow-lg shadow-red-500/10">
               <Video className="mx-auto mb-2 text-red-400" size={24} />
               <p className="text-lg font-bold">{model.videos}</p>
               <p className="text-xs text-gray-400">Vídeos Premium</p>
             </div>
           </div>
+
+          {/* CONVERSION RATE */}
           <div className="bg-green-500/10 border border-green-500/30 p-4 rounded-lg flex items-center gap-4">
             <TrendingUp className="text-green-400" size={32} />
             <div>
               <p className="text-xl font-bold text-green-400">{model.conversion}%</p>
-              <p className="text-sm">Taxa de Conversão</p>
-              <p className="text-xs text-gray-400 mt-1">Performance comprovada com alta taxa de conversão.</p>
+              <p className="text-sm font-bold">Taxa de Conversão</p>
+              <p className="text-xs text-gray-400 mt-1">Performance comprovada com alta taxa de conversão em vendas.</p>
             </div>
           </div>
+          
+          {/* CHAT BUTTON */}
           <Link href="/chat" className="w-full">
             <Button size="lg" className="w-full bg-green-500 hover:bg-green-600 text-black font-bold text-base">
               Conversar Agora
@@ -190,5 +214,3 @@ export default function Home() {
     </main>
   );
 }
-
-    
