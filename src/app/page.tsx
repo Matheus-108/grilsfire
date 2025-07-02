@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Folder, MessageCircle, Camera, Video, TrendingUp, ChevronLeft, ChevronRight, X, Star, CheckCircle2 } from 'lucide-react';
 import { ParticlesBackground } from '@/components/particles-background';
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from '@/lib/utils';
 
@@ -51,6 +51,9 @@ const PackModal = ({ model, onClose }: { model: Model; onClose: () => void }) =>
   return (
     <Dialog open={true} onOpenChange={(isOpen) => !isOpen && onClose()}>
       <DialogContent className="bg-[#1f2128] border-none text-white p-0 max-w-sm w-full rounded-2xl overflow-hidden">
+        <DialogHeader className="sr-only">
+          <DialogTitle>Detalhes do Pack de {model.name}</DialogTitle>
+        </DialogHeader>
         {/* PHOTOS */}
         <div className="relative aspect-[3/4]">
           <Image
