@@ -50,12 +50,12 @@ const PackModal = ({ model, onClose }: { model: Model; onClose: () => void }) =>
 
   return (
     <Dialog open={true} onOpenChange={(isOpen) => !isOpen && onClose()}>
-      <DialogContent className="bg-[#1f2128] border-none text-white p-0 max-w-sm w-full rounded-2xl overflow-hidden">
+      <DialogContent className="bg-[#1f2128] border-none text-white p-0 max-w-sm w-full rounded-2xl flex flex-col max-h-[90vh]">
         <DialogHeader className="sr-only">
           <DialogTitle>Detalhes do Pack de {model.name}</DialogTitle>
         </DialogHeader>
         {/* PHOTOS */}
-        <div className="relative aspect-[3/4]">
+        <div className="relative aspect-[3/4] flex-shrink-0">
           <Image
             src={model.packImages[currentIndex]}
             alt={`Modelo ${model.name} - Imagem ${currentIndex + 1}`}
@@ -77,7 +77,7 @@ const PackModal = ({ model, onClose }: { model: Model; onClose: () => void }) =>
           </button>
         </div>
 
-        <div className="p-5 flex flex-col gap-4">
+        <div className="p-5 flex flex-col gap-4 overflow-y-auto">
           {/* NAME */}
           <h2 className="text-2xl font-bold">{model.name}</h2>
           
