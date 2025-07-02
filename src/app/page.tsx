@@ -5,7 +5,6 @@ import { Folder, MessageCircle } from 'lucide-react';
 
 type Model = {
   name: string;
-  price: string;
   photos: number;
   videos: number;
   conversion: number;
@@ -13,15 +12,15 @@ type Model = {
 };
 
 const models: Model[] = [
-  { name: 'Camila Santos', price: '59', photos: 889, videos: 106, conversion: 98.2, imageUrl: 'https://i.imgur.com/4AtEyYU.jpeg' },
-  { name: 'Ana Lopes', price: '49', photos: 760, videos: 88, conversion: 97.5, imageUrl: 'https://i.imgur.com/7zr5mSM.png' },
-  { name: 'Júlia Lima', price: '69', photos: 920, videos: 112, conversion: 99.1, imageUrl: 'https://i.imgur.com/NrDNobZ.png' },
-  { name: 'Larissa Melo', price: '55', photos: 815, videos: 97, conversion: 96.4, imageUrl: 'https://i.imgur.com/Tr56Ory.png' },
-  { name: 'Bianca Cruz', price: '62', photos: 780, videos: 102, conversion: 97.8, imageUrl: 'https://i.imgur.com/mkCX0mf.png' },
-  { name: 'Natália Reis', price: '58', photos: 833, videos: 93, conversion: 98.6, imageUrl: 'https://i.imgur.com/oSObgKj.png' },
-  { name: 'Rebeca Martins', price: '51', photos: 802, videos: 84, conversion: 95.2, imageUrl: 'https://i.imgur.com/ZGaW7JT.png' },
-  { name: 'Vanessa Silva', price: '67', photos: 945, videos: 120, conversion: 99.8, imageUrl: 'https://i.imgur.com/ytt7dqR.png' },
-  { name: 'Isabela Rocha', price: '54', photos: 879, videos: 100, conversion: 96.9, imageUrl: 'https://i.imgur.com/kKyoKlq.png' },
+  { name: 'Camila Santos', photos: 889, videos: 106, conversion: 98.2, imageUrl: 'https://i.imgur.com/4AtEyYU.jpeg' },
+  { name: 'Ana Lopes', photos: 760, videos: 88, conversion: 97.5, imageUrl: 'https://i.imgur.com/7zr5mSM.png' },
+  { name: 'Júlia Lima', photos: 920, videos: 112, conversion: 99.1, imageUrl: 'https://i.imgur.com/NrDNobZ.png' },
+  { name: 'Larissa Melo', photos: 815, videos: 97, conversion: 96.4, imageUrl: 'https://i.imgur.com/Tr56Ory.png' },
+  { name: 'Bianca Cruz', photos: 780, videos: 102, conversion: 97.8, imageUrl: 'https://i.imgur.com/mkCX0mf.png' },
+  { name: 'Natália Reis', photos: 833, videos: 93, conversion: 98.6, imageUrl: 'https://i.imgur.com/oSObgKj.png' },
+  { name: 'Rebeca Martins', photos: 802, videos: 84, conversion: 95.2, imageUrl: 'https://i.imgur.com/ZGaW7JT.png' },
+  { name: 'Vanessa Silva', photos: 945, videos: 120, conversion: 99.8, imageUrl: 'https://i.imgur.com/ytt7dqR.png' },
+  { name: 'Isabela Rocha', photos: 879, videos: 100, conversion: 96.9, imageUrl: 'https://i.imgur.com/kKyoKlq.png' },
 ];
 
 const ModelCard = ({ model }: { model: Model }) => (
@@ -37,7 +36,6 @@ const ModelCard = ({ model }: { model: Model }) => (
     <div className="p-4 text-left">
       <div className="flex justify-between items-start">
         <h3 className="text-xl font-bold text-white">{model.name}</h3>
-        <span className="text-red-500 font-bold text-lg">R$ {model.price}</span>
       </div>
       <div className="text-sm text-gray-400 my-1">
         📸 {model.photos} fotos • 🎥 {model.videos} vídeos
