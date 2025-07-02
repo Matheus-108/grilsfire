@@ -60,7 +60,7 @@ const chatEngagementPrompt = ai.definePrompt({
 
   If the user agrees to the confirmation, provide the payment details (suportepro29@gmail.com) and set needsPayment to true. Do not provide payment details unless the user expresses interest.
 
-  After the user confirms they have made the payment, provide your WhatsApp number (+13981101588).
+  After the user confirms they have made the payment, provide your WhatsApp number (+55 13 98110-1588).
 
   Be sure to include emojis in every message to increase engagement.
 
