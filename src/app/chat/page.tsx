@@ -4,12 +4,14 @@
 import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
-import { Lock, Heart, Copy, Check } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Lock, Heart, Copy, Check, CheckCircle2 } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 
 export default function ChatPage() {
   const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
   const [whatsappNumber, setWhatsappNumber] = useState('');
+  const [pixCode, setPixCode] = useState('');
   const { toast } = useToast();
 
   const paymentDetails = 'suportepro29@gmail.com'; // As defined in the AI prompt
@@ -73,32 +75,85 @@ export default function ChatPage() {
         width="100%"
         height="100%"
         style={{ border: 'none' }}
-        title="Atendimento Interativo com Typebot"
+        title="Atendimento Interativo"
       ></iframe>
       
       <Dialog open={isPaymentModalOpen} onOpenChange={setPaymentModalOpen}>
-        <DialogContent className="bg-card border-primary">
-          <DialogHeader>
-            <DialogTitle className="flex flex-col items-center text-center font-headline text-2xl">
-              <Lock className="w-10 h-10 text-primary animate-pulse my-4" />
-              Desbloquear o WhatsApp da Letycia
+        <DialogContent className="bg-[#1a1a1a] text-white border-none shadow-[0_0_30px_5px_rgba(192,38,211,0.2)] p-6 font-sans max-w-sm mx-auto rounded-2xl">
+          <DialogHeader className="items-center text-center space-y-2">
+            <div className="p-3 bg-gradient-to-br from-fuchsia-600 to-pink-600 rounded-full mb-2">
+              <Lock className="w-6 h-6 text-white" />
+            </div>
+            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-fuchsia-400 to-pink-400 bg-clip-text text-transparent">
+              Desbloquear WhatsApp da Letycia
             </DialogTitle>
-            <DialogDescription className="text-center text-lg py-4">
-              Por segurança, confirme seu perfil com um Pix de <strong>R$19,90</strong>. Após isso, receba o WhatsApp da Letycia e continue sem limites.
+            <DialogDescription className="text-gray-400 text-base">
+              Por segurança, confirme seu perfil com um PIX de R$19,90
             </DialogDescription>
           </DialogHeader>
-          <div className="text-center p-4 bg-secondary rounded-lg">
-              <p className="text-sm text-muted-foreground">Chave PIX E-mail:</p>
-              <div className="flex items-center justify-center gap-2 mt-1">
-                <p className="font-mono text-lg text-primary-foreground">{paymentDetails}</p>
-                <Button variant="ghost" size="icon" onClick={() => copyToClipboard(paymentDetails, 'Chave PIX copiada!')}>
-                  <Copy className="w-5 h-5" />
+
+          <div className="text-center my-4">
+            <Lock className="mx-auto w-5 h-5 text-gray-500" />
+            <p className="font-semibold text-gray-300">Conteúdo Bloqueado</p>
+            <p className="text-sm text-gray-500">Confirme o pagamento para ver</p>
+          </div>
+          
+          <div className="bg-black/30 border border-purple-500/30 rounded-lg p-4 my-4 space-y-2">
+            <h4 className="font-bold text-center text-gray-200 mb-3">Após a confirmação você recebe:</h4>
+            <div className="flex items-center gap-2 text-gray-200">
+              <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
+              <span>WhatsApp pessoal da Letycia</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-200">
+              <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
+              <span>Fotos exclusivas e picantes 🔥</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-200">
+              <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
+              <span>Chat sem limites 24h</span>
+            </div>
+             <div className="flex items-center gap-2 text-gray-200">
+              <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
+              <span>Conteúdo personalizado 💋</span>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <label className="text-sm font-semibold text-gray-400">Chave PIX (E-mail):</label>
+              <div className="flex items-center bg-[#2d2d2d] p-1 pl-4 rounded-lg mt-1">
+                <span className="flex-1 font-mono text-gray-200">{paymentDetails}</span>
+                <Button onClick={() => copyToClipboard(paymentDetails, 'Chave PIX copiada!')} className="bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-bold py-2 px-4 rounded-md text-sm">
+                  Copiar
                 </Button>
               </div>
+            </div>
+            
+            <div>
+              <label className="text-sm font-semibold text-gray-400">Código de confirmação do PIX:</label>
+              <Input
+                value={pixCode}
+                onChange={(e) => setPixCode(e.target.value)}
+                placeholder="Cole aqui o código do seu PIX..."
+                className="bg-[#2d2d2d] border-gray-600 text-white mt-1 h-12"
+              />
+              <p className="text-xs text-gray-500 mt-1">*Digite qualquer código após fazer o PIX</p>
+            </div>
           </div>
-          <Button onClick={handlePaymentConfirmation} size="lg" className="w-full mt-4 bg-primary text-primary-foreground animate-shimmer">
-            <Heart className="mr-2 fill-red-500"/> Já paguei, confirmar!
+
+          <Button
+            onClick={handlePaymentConfirmation}
+            disabled={!pixCode}
+            size="lg"
+            className="w-full mt-6 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-bold text-lg h-14 disabled:opacity-50 disabled:cursor-not-allowed hover:from-fuchsia-700 hover:to-pink-700"
+          >
+            <span className="mr-2">💖</span> Confirmar Pagamento - R$ 19,90
           </Button>
+          
+          <p className="text-xs text-center text-gray-500 mt-2">
+            <Lock className="inline w-3 h-3 mr-1" />
+            Pagamento 100% seguro • Satisfaction garantida
+          </p>
         </DialogContent>
       </Dialog>
     </div>
