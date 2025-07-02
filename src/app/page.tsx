@@ -50,82 +50,83 @@ const PackModal = ({ model, onClose }: { model: Model; onClose: () => void }) =>
 
   return (
     <Dialog open={true} onOpenChange={(isOpen) => !isOpen && onClose()}>
-      <DialogContent className="bg-[#1f2128] border-none text-white p-0 max-w-sm w-full rounded-2xl flex flex-col max-h-[90vh]">
+      <DialogContent className="bg-[#121212] font-sans border-none text-white p-0 max-w-sm md:max-w-5xl w-full rounded-2xl flex flex-col md:flex-row-reverse max-h-[95vh] md:h-[700px]">
         <DialogHeader className="sr-only">
           <DialogTitle>Detalhes do Pack de {model.name}</DialogTitle>
         </DialogHeader>
-        {/* PHOTOS */}
-        <div className="relative aspect-[3/4] flex-shrink-0">
-          <Image
-            src={model.packImages[currentIndex]}
-            alt={`Modelo ${model.name} - Imagem ${currentIndex + 1}`}
-            fill
-            className="object-cover"
-            data-ai-hint="woman posing"
-          />
-          <button onClick={prevImage} className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 p-1 rounded-full text-white hover:bg-black/75 transition-colors">
-            <ChevronLeft size={24} />
-          </button>
-          <button onClick={nextImage} className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 p-1 rounded-full text-white hover:bg-black/75 transition-colors">
-            <ChevronRight size={24} />
-          </button>
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white text-xs font-bold px-3 py-1 rounded-full">
-            {currentIndex + 1} / {model.packImages.length}
+
+        {/* --- RIGHT COLUMN / TOP ON MOBILE: IMAGE CAROUSEL --- */}
+        <div className="relative w-full md:w-[55%] flex-shrink-0">
+          <div className="relative aspect-[4/5] md:aspect-auto md:h-full">
+            <Image
+              src={model.packImages[currentIndex]}
+              alt={`Modelo ${model.name} - Imagem ${currentIndex + 1}`}
+              fill
+              className="object-cover md:rounded-r-2xl"
+              data-ai-hint="woman posing"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:bg-gradient-to-r md:from-black/60 md:via-transparent" />
+            <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full text-white hover:bg-black/75 transition-colors z-10">
+              <ChevronLeft size={24} />
+            </button>
+            <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full text-white hover:bg-black/75 transition-colors z-10">
+              <ChevronRight size={24} />
+            </button>
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white text-sm font-bold px-3 py-1 rounded-full z-10">
+              {currentIndex + 1} / {model.packImages.length}
+            </div>
           </div>
-          <button onClick={onClose} className="absolute top-4 right-4 bg-black/50 p-1.5 rounded-full text-white hover:bg-black/75 transition-colors">
+           <button onClick={onClose} className="absolute top-4 right-4 bg-black/50 p-1.5 rounded-full text-white hover:bg-black/75 transition-colors z-20">
             <X size={20} />
           </button>
         </div>
 
-        <div className="p-5 flex flex-col gap-4 overflow-y-auto">
-          {/* NAME */}
-          <h2 className="text-2xl font-bold">{model.name}</h2>
+        {/* --- LEFT COLUMN / BOTTOM ON MOBILE: DETAILS --- */}
+        <div className="w-full md:w-[45%] p-6 flex flex-col gap-5 overflow-y-auto">
+          <h2 className="text-3xl font-extrabold">{model.name}</h2>
           
-          {/* STARS & VALIDATION */}
-          <div className="flex flex-col gap-2 -mt-2 mb-2">
-            <div className="flex items-center gap-1 text-amber-400">
-              <Star fill="currentColor" size={16} />
-              <Star fill="currentColor" size={16} />
-              <Star fill="currentColor" size={16} />
-              <Star fill="currentColor" size={16} />
-              <Star fill="currentColor" size={16} />
-            </div>
-            <div className="flex items-center gap-2 text-sm text-green-400 font-semibold">
-              <CheckCircle2 size={16} />
-              <span>Conteúdo Validado</span>
-            </div>
-          </div>
-
-          {/* PHOTO/VIDEO COUNT */}
-          <div className="grid grid-cols-2 gap-3">
-            <div className="bg-[#2a2d35] p-4 rounded-lg text-center border-t-2 border-red-500/50 shadow-lg shadow-red-500/10">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-[#1f2128] p-4 rounded-xl text-center border border-gray-700/50 shadow-lg shadow-black/20">
               <Camera className="mx-auto mb-2 text-red-400" size={24} />
-              <p className="text-lg font-bold">{model.photos}</p>
+              <p className="text-xl font-bold">{model.photos}</p>
               <p className="text-xs text-gray-400">Fotos Exclusivas</p>
             </div>
-            <div className="bg-[#2a2d35] p-4 rounded-lg text-center border-t-2 border-red-500/50 shadow-lg shadow-red-500/10">
+             <div className="bg-[#1f2128] p-4 rounded-xl text-center border border-gray-700/50 shadow-lg shadow-black/20">
               <Video className="mx-auto mb-2 text-red-400" size={24} />
-              <p className="text-lg font-bold">{model.videos}</p>
+              <p className="text-xl font-bold">{model.videos}</p>
               <p className="text-xs text-gray-400">Vídeos Premium</p>
             </div>
           </div>
 
-          {/* CONVERSION RATE */}
-          <div className="bg-green-500/10 border border-green-500/30 p-4 rounded-lg flex items-center gap-4">
-            <TrendingUp className="text-green-400" size={32} />
+          <div className="bg-gradient-to-br from-green-500/20 to-green-500/5 border border-green-500/30 p-4 rounded-xl flex items-start gap-4">
+            <TrendingUp className="text-green-400 mt-1" size={32} />
             <div>
-              <p className="text-xl font-bold text-green-400">{model.conversion}%</p>
-              <p className="text-sm font-bold">Taxa de Conversão</p>
+              <p className="text-2xl font-bold text-green-400">{model.conversion}%</p>
+              <p className="text-base font-bold">Taxa de Conversão</p>
               <p className="text-xs text-gray-400 mt-1">Performance comprovada com alta taxa de conversão em vendas.</p>
             </div>
           </div>
           
-          {/* CHAT BUTTON */}
           <Link href="/chat" className="w-full">
-            <Button size="lg" className="w-full bg-green-500 hover:bg-green-600 text-black font-bold text-base">
-              Conversar Agora
+            <Button size="lg" className="w-full bg-green-500 hover:bg-green-600 text-black font-bold text-base h-14">
+              <MessageCircle className="mr-2"/> Conversar Agora
             </Button>
           </Link>
+          
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-1 text-amber-400">
+              <Star fill="currentColor" size={18} /><Star fill="currentColor" size={18} /><Star fill="currentColor" size={18} /><Star fill="currentColor" size={18} /><Star fill="currentColor" size={18} />
+            </div>
+            <p className="text-sm mt-1 text-gray-400">Produto com alta avaliação</p>
+          </div>
+
+          <div className="bg-gradient-to-br from-green-500/20 to-green-500/5 border border-green-500/30 p-4 rounded-xl flex items-center gap-3">
+             <CheckCircle2 size={32} className="text-green-400 flex-shrink-0" />
+             <div>
+                <p className="font-bold text-base">Conteúdo Validado</p>
+                <p className="text-xs text-gray-400">Testado e aprovado por especialistas</p>
+             </div>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
