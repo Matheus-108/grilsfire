@@ -23,7 +23,7 @@ type Model = {
 
 const models: Model[] = [
   { name: 'Camila Santos', photos: 889, videos: 106, conversion: 98.2, imageUrl: 'https://i.imgur.com/4AtEyYU.jpeg', isOnline: true },
-  { name: 'Ana Lopes', photos: 760, videos: 88, conversion: 97.5, imageUrl: 'https://i.imgur.com/7zr5mSM.png', packImages: ['https://i.imgur.com/IESQs9e.png', 'https://i.imgur.com/iyZQuMq.png', 'https://i.imgur.com/oaBNCCP.png'] },
+  { name: 'Ana Lopes', photos: 760, videos: 88, conversion: 97.5, imageUrl: 'https://i.imgur.com/7zr5mSM.png', packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/vl5v8a4m42-1751383637200.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/qmiensm86z-1751383637929.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/1v7uoib911o-1751383638587.jpg'] },
   { name: 'Júlia Lima', photos: 920, videos: 112, conversion: 99.1, imageUrl: 'https://i.imgur.com/NrDNobZ.png', isOnline: true, packImages: ['https://i.imgur.com/kbg9g66.png', 'https://i.imgur.com/297lNzN.png', 'https://i.imgur.com/jjTu1AP.png'] },
   { name: 'Larissa Melo', photos: 815, videos: 97, conversion: 96.4, imageUrl: 'https://i.imgur.com/Tr56Ory.png', packImages: ['https://i.imgur.com/xcqQIRW.png', 'https://i.imgur.com/NJz3OmP.png', 'https://i.imgur.com/jGbAsFW.png'] },
   { name: 'Bianca Cruz', photos: 780, videos: 102, conversion: 97.8, imageUrl: 'https://i.imgur.com/mkCX0mf.png', isOnline: true, packImages: ['https://i.imgur.com/tPGHIkE.png', 'https://i.imgur.com/0WW0nMH.png', 'https://i.imgur.com/8CnzcQ9.png'] },
