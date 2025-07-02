@@ -78,15 +78,15 @@ export default function ChatPage() {
       ></iframe>
       
       <Dialog open={isPaymentModalOpen} onOpenChange={setPaymentModalOpen}>
-        <DialogContent className="bg-[#1a1a1a] text-white border-none shadow-[0_0_30px_5px_rgba(192,38,211,0.2)] p-6 font-sans max-w-sm mx-auto rounded-2xl">
+        <DialogContent className="bg-[#1a1a1a] text-white border-none shadow-[0_0_30px_5px_rgba(192,38,211,0.2)] p-4 sm:p-6 font-sans w-full max-w-[calc(100vw-2rem)] sm:max-w-sm rounded-2xl max-h-[95vh] overflow-y-auto">
           <DialogHeader className="items-center text-center space-y-2">
             <div className="p-3 bg-gradient-to-br from-fuchsia-600 to-pink-600 rounded-full mb-2">
               <Lock className="w-6 h-6 text-white" />
             </div>
-            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-fuchsia-400 to-pink-400 bg-clip-text text-transparent">
+            <DialogTitle className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-fuchsia-400 to-pink-400 bg-clip-text text-transparent break-words">
               Desbloquear WhatsApp da Letycia
             </DialogTitle>
-            <DialogDescription className="text-gray-400 text-base text-center">
+            <DialogDescription className="text-gray-400 text-sm sm:text-base text-center break-words">
               Por segurança, confirme seu perfil com um PIX de R$19,90
             </DialogDescription>
           </DialogHeader>
@@ -99,20 +99,20 @@ export default function ChatPage() {
 
           <div className="bg-black/30 border border-purple-500/30 rounded-lg p-4 my-4 space-y-3">
             <h4 className="font-bold text-center text-gray-200 mb-3">Após a confirmação você recebe:</h4>
-            <div className="flex items-center gap-2 text-gray-200">
-              <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
+            <div className="flex items-start gap-2 text-gray-200 text-sm">
+              <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
               <span>WhatsApp pessoal da Letycia</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-200">
-              <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
+            <div className="flex items-start gap-2 text-gray-200 text-sm">
+              <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
               <span>Fotos exclusivas e picantes 🔥</span>
             </div>
-            <div className="flex items-center gap-2 text-gray-200">
-              <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
+            <div className="flex items-start gap-2 text-gray-200 text-sm">
+              <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
               <span>Chat sem limites 24h</span>
             </div>
-             <div className="flex items-center gap-2 text-gray-200">
-              <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
+             <div className="flex items-start gap-2 text-gray-200 text-sm">
+              <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
               <span>Conteúdo personalizado 💋</span>
             </div>
           </div>
@@ -121,8 +121,8 @@ export default function ChatPage() {
             <div>
               <label className="text-sm font-semibold text-gray-400">Chave PIX (E-mail):</label>
               <div className="flex items-center bg-[#2d2d2d] p-1 pl-4 rounded-lg mt-1">
-                <span className="flex-1 font-mono text-gray-200">{paymentDetails}</span>
-                <Button onClick={() => copyToClipboard(paymentDetails, 'Chave PIX copiada!')} className="bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-bold py-2 px-4 rounded-md text-sm">
+                <span className="flex-1 font-mono text-gray-200 text-sm break-all">{paymentDetails}</span>
+                <Button onClick={() => copyToClipboard(paymentDetails, 'Chave PIX copiada!')} className="bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-bold py-2 px-4 rounded-md text-sm shrink-0">
                   Copiar
                 </Button>
               </div>
@@ -144,7 +144,7 @@ export default function ChatPage() {
             onClick={handlePaymentConfirmation}
             disabled={!pixCode}
             size="lg"
-            className="w-full mt-6 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-bold text-lg h-14 hover:from-fuchsia-700 hover:to-pink-700 disabled:opacity-50"
+            className="w-full mt-6 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-bold text-base h-14 hover:from-fuchsia-700 hover:to-pink-700 disabled:opacity-50"
           >
             <span className="mr-2">💖</span> Confirmar Pagamento - R$ 19,90
           </Button>
