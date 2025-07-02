@@ -9,22 +9,29 @@ type Model = {
   videos: number;
   conversion: number;
   imageUrl: string;
+  isOnline?: boolean;
 };
 
 const models: Model[] = [
-  { name: 'Camila Santos', photos: 889, videos: 106, conversion: 98.2, imageUrl: 'https://i.imgur.com/4AtEyYU.jpeg' },
+  { name: 'Camila Santos', photos: 889, videos: 106, conversion: 98.2, imageUrl: 'https://i.imgur.com/4AtEyYU.jpeg', isOnline: true },
   { name: 'Ana Lopes', photos: 760, videos: 88, conversion: 97.5, imageUrl: 'https://i.imgur.com/7zr5mSM.png' },
-  { name: 'Júlia Lima', photos: 920, videos: 112, conversion: 99.1, imageUrl: 'https://i.imgur.com/NrDNobZ.png' },
+  { name: 'Júlia Lima', photos: 920, videos: 112, conversion: 99.1, imageUrl: 'https://i.imgur.com/NrDNobZ.png', isOnline: true },
   { name: 'Larissa Melo', photos: 815, videos: 97, conversion: 96.4, imageUrl: 'https://i.imgur.com/Tr56Ory.png' },
-  { name: 'Bianca Cruz', photos: 780, videos: 102, conversion: 97.8, imageUrl: 'https://i.imgur.com/mkCX0mf.png' },
+  { name: 'Bianca Cruz', photos: 780, videos: 102, conversion: 97.8, imageUrl: 'https://i.imgur.com/mkCX0mf.png', isOnline: true },
   { name: 'Natália Reis', photos: 833, videos: 93, conversion: 98.6, imageUrl: 'https://i.imgur.com/oSObgKj.png' },
-  { name: 'Rebeca Martins', photos: 802, videos: 84, conversion: 95.2, imageUrl: 'https://i.imgur.com/ZGaW7JT.png' },
-  { name: 'Vanessa Silva', photos: 945, videos: 120, conversion: 99.8, imageUrl: 'https://i.imgur.com/ytt7dqR.png' },
+  { name: 'Rebeca Martins', photos: 802, videos: 84, conversion: 95.2, imageUrl: 'https://i.imgur.com/ZGaW7JT.png', isOnline: true },
+  { name: 'Vanessa Silva', photos: 945, videos: 120, conversion: 99.8, imageUrl: 'https://i.imgur.com/ytt7dqR.png', isOnline: true },
   { name: 'Isabela Rocha', photos: 879, videos: 100, conversion: 96.9, imageUrl: 'https://i.imgur.com/kKyoKlq.png' },
 ];
 
 const ModelCard = ({ model }: { model: Model }) => (
-  <div className="bg-[#1a1a1a] rounded-xl overflow-hidden shadow-lg shadow-red-500/20 transition-transform duration-300 hover:scale-105 group">
+  <div className="relative bg-[#1a1a1a] rounded-xl overflow-hidden shadow-lg shadow-red-500/20 transition-transform duration-300 hover:scale-105 group">
+    {model.isOnline && (
+      <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 rounded-full bg-black/60 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-sm">
+        <span>🟢</span>
+        <span>Online</span>
+      </div>
+    )}
     <Image 
       src={model.imageUrl} 
       alt={`Modelo ${model.name}`} 
@@ -75,7 +82,7 @@ export default function Home() {
         </p>
         
         <div className="flex justify-center flex-wrap gap-x-8 gap-y-4 mb-12">
-          <div className="text-lg font-semibold text-red-400">🔴 94 Garotas Online</div>
+          <div className="text-lg font-semibold text-green-400">🟢 94 Garotas Online</div>
           <div className="text-lg font-semibold text-purple-400">✨ 12 Novas Hoje</div>
           <div className="text-lg font-semibold text-green-400">💬 100% Interações Reais</div>
         </div>
@@ -84,6 +91,12 @@ export default function Home() {
           {models.map(model => (
             <ModelCard key={model.name} model={model} />
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <button className="bg-gradient-to-r from-red-500 to-orange-400 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform duration-300 hover:scale-105">
+            Exibir mais
+          </button>
         </div>
       </div>
     </main>
