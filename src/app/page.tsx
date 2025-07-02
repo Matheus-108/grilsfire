@@ -67,7 +67,7 @@ const ModelCard = ({ model }: { model: Model }) => (
 export default function Home() {
   return (
     <main className="bg-[#0d0d0d] text-white font-sans min-h-screen relative overflow-hidden
-                    before:content-[''] before:fixed before:inset-0 before:bg-[radial-gradient(circle_at_center,#1a1a1a_10%,transparent_11%)] before:bg-[length:5px_5px] before:opacity-10 before:-z-10">
+                    before:content-[''] before:fixed before:inset-0 before:bg-[radial-gradient(circle_at_center,#1a1a1a_10%,transparent_11%)] before:bg-[length:5px_5px] before:bg-[position:5px_5px] before:opacity-10 before:-z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
         <header className="flex justify-between items-center mb-8">
           <h2 className="text-2xl font-bold text-red-500">GirlFinder 💬</h2>
