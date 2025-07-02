@@ -17,7 +17,7 @@ export default function ChatPage() {
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      // For security, you might want to check event.origin in a production app
+      // For security, check origin in a production app
       // if (event.origin !== 'https://typebot.io') return;
 
       if (event.data === 'showPaymentModal') {
@@ -50,31 +50,32 @@ export default function ChatPage() {
     setPaymentModalOpen(false);
   };
 
-  return (
-    <div className="flex flex-col items-center w-full min-h-screen bg-background p-4">
-      <h1 className="text-3xl font-headline font-bold my-6 text-foreground">
-        Atendimento Interativo
-      </h1>
-      <div className="w-full max-w-5xl rounded-lg overflow-hidden shadow-lg shadow-primary/20">
-        <iframe
-          src="https://typebot.io/funil-isa-64b8rfv"
-          width="100%"
-          height="600px"
-          style={{ border: 'none' }}
-          title="Atendimento Interativo com Typebot"
-        ></iframe>
-      </div>
-
-      {whatsappNumber && (
-         <div className="mt-6 text-center p-4 bg-green-500/10 rounded-lg max-w-5xl w-full">
-            <h3 className="font-headline text-xl text-green-400">WhatsApp Desbloqueado!</h3>
-            <p className="mt-2">Clique para copiar meu número e vamos conversar! 💋</p>
-            <Button onClick={() => copyToClipboard(whatsappNumber, 'WhatsApp copiado!')} className="mt-4 bg-green-500 hover:bg-green-600 text-white w-full max-w-sm mx-auto">
-                {whatsappNumber} <Copy className="ml-2" />
-            </Button>
+  // If WhatsApp is unlocked, show the success screen
+  if (whatsappNumber) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full min-h-screen bg-background p-4">
+        <div className="text-center p-6 bg-card rounded-2xl max-w-md w-full shadow-lg shadow-primary/20 animate-in fade-in zoom-in-95">
+          <h3 className="font-headline text-2xl text-green-400">WhatsApp Desbloqueado!</h3>
+          <p className="mt-4 text-lg">Clique para copiar meu número e vamos conversar! 💋</p>
+          <Button onClick={() => copyToClipboard(whatsappNumber, 'WhatsApp copiado!')} size="lg" className="mt-6 bg-green-500 hover:bg-green-600 text-white w-full">
+            <Copy className="mr-2" /> {whatsappNumber}
+          </Button>
         </div>
-      )}
+      </div>
+    );
+  }
 
+  // Otherwise, show the full-screen chatbot iframe
+  return (
+    <div className="w-full h-screen bg-background">
+      <iframe
+        src="https://typebot.io/funil-isa-64b8rfv"
+        width="100%"
+        height="100%"
+        style={{ border: 'none' }}
+        title="Atendimento Interativo com Typebot"
+      ></iframe>
+      
       <Dialog open={isPaymentModalOpen} onOpenChange={setPaymentModalOpen}>
         <DialogContent className="bg-card border-primary">
           <DialogHeader>
