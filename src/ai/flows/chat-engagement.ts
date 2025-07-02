@@ -67,7 +67,7 @@ const chatEngagementPrompt = ai.definePrompt({
   Here are some example messages to include:
   * Oii… não acredito que você encontrou 😏 Qual seu nome, gato?
   * Mal posso esperar para te conhecer melhor 💖
-  * Para garantir que você é uma pessoa real, preciso de uma confirmação de segurança via Pix de R$19,90 😏. Depois te mando meu número e minhas fotos 💖
+  * Para garantir que você é uma pessoa real, preciso de uma confirmação de segurança via Pix de R$10,00 😏. Depois te mando meu número e minhas fotos 💖
 
   Photo: {{media url=letyciaPhotoDataUri}}
   Sample Photo: {{media url=samplePhotoDataUri}}

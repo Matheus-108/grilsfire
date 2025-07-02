@@ -75,7 +75,6 @@ export default function ChatPage() {
         width="100%"
         height="100%"
         style={{ border: 'none' }}
-        title="Atendimento Interativo"
       ></iframe>
       
       <Dialog open={isPaymentModalOpen} onOpenChange={setPaymentModalOpen}>
@@ -87,17 +86,11 @@ export default function ChatPage() {
             <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-fuchsia-400 to-pink-400 bg-clip-text text-transparent">
               Desbloquear WhatsApp da Letycia
             </DialogTitle>
-            <DialogDescription className="text-gray-400 text-base">
-              Por segurança, confirme seu perfil com um PIX de R$19,90
+            <DialogDescription className="text-gray-400 text-base text-center">
+              Por segurança, confirme seu perfil com um PIX de R$10,00
             </DialogDescription>
           </DialogHeader>
 
-          <div className="text-center my-4">
-            <Lock className="mx-auto w-5 h-5 text-gray-500" />
-            <p className="font-semibold text-gray-300">Conteúdo Bloqueado</p>
-            <p className="text-sm text-gray-500">Confirme o pagamento para ver</p>
-          </div>
-          
           <div className="bg-black/30 border border-purple-500/30 rounded-lg p-4 my-4 space-y-2">
             <h4 className="font-bold text-center text-gray-200 mb-3">Após a confirmação você recebe:</h4>
             <div className="flex items-center gap-2 text-gray-200">
@@ -143,11 +136,10 @@ export default function ChatPage() {
 
           <Button
             onClick={handlePaymentConfirmation}
-            disabled={!pixCode}
             size="lg"
             className="w-full mt-6 bg-gradient-to-r from-fuchsia-600 to-pink-600 text-white font-bold text-lg h-14 disabled:opacity-50 disabled:cursor-not-allowed hover:from-fuchsia-700 hover:to-pink-700"
           >
-            <span className="mr-2">💖</span> Confirmar Pagamento - R$ 19,90
+            <span className="mr-2">💖</span> Confirmar Pagamento - R$ 10,00
           </Button>
           
           <p className="text-xs text-center text-gray-500 mt-2">
