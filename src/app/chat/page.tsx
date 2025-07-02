@@ -1,14 +1,23 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Lock, Heart, Copy, Check, CheckCircle2 } from 'lucide-react';
+import { Lock, Copy, Check, CheckCircle2 } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { getModelByName, getAllModels } from '@/lib/models';
+import type { Model } from '@/lib/models';
 
-export default function ChatPage() {
+function ChatContent() {
+  const searchParams = useSearchParams();
+  const modelName = searchParams.get('model');
+  const allModels = getAllModels();
+  // Fallback to the first model if no name is provided or the model is not found
+  const [model, setModel] = useState<Model>(getModelByName(modelName || '') || allModels[0]);
+  
   const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
   const [whatsappNumber, setWhatsappNumber] = useState('');
   const [pixCode, setPixCode] = useState('');
@@ -17,6 +26,11 @@ export default function ChatPage() {
   const paymentDetails = 'suportepro29@gmail.com'; // As defined in the AI prompt
   const finalWhatsappNumber = '+13981101588'; // As defined in the AI prompt
 
+  useEffect(() => {
+    const newModel = getModelByName(modelName || '') || allModels[0];
+    setModel(newModel);
+  }, [modelName, allModels]);
+  
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       // For security, check origin in a production app
@@ -84,7 +98,7 @@ export default function ChatPage() {
               <Lock className="w-6 h-6 text-white" />
             </div>
             <DialogTitle className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-fuchsia-400 to-pink-400 bg-clip-text text-transparent break-words">
-              Desbloquear WhatsApp da Letycia
+              Desbloquear WhatsApp da {model.name}
             </DialogTitle>
             <DialogDescription className="text-gray-400 text-sm sm:text-base text-center break-words">
               Por segurança, confirme seu perfil com um PIX de R$19,90
@@ -101,7 +115,7 @@ export default function ChatPage() {
             <h4 className="font-bold text-center text-gray-200 mb-3">Após a confirmação você recebe:</h4>
             <div className="flex items-start gap-2 text-gray-200 text-sm">
               <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-              <span>WhatsApp pessoal da Letycia</span>
+              <span>WhatsApp pessoal da {model.name}</span>
             </div>
             <div className="flex items-start gap-2 text-gray-200 text-sm">
               <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
@@ -156,5 +170,13 @@ export default function ChatPage() {
         </DialogContent>
       </Dialog>
     </div>
+  );
+}
+
+export default function ChatPage() {
+  return (
+    <Suspense fallback={<div className="w-full h-screen bg-background flex items-center justify-center">Carregando...</div>}>
+      <ChatContent />
+    </Suspense>
   );
 }

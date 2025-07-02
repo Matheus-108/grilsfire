@@ -9,40 +9,8 @@ import { ParticlesBackground } from '@/components/particles-background';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { cn } from '@/lib/utils';
+import { type Model, models, moreModels } from '@/lib/models';
 
-
-type Model = {
-  name: string;
-  photos: number;
-  videos: number;
-  conversion: number;
-  imageUrl: string;
-  isOnline?: boolean;
-  packImages?: string[];
-};
-
-const models: Model[] = [
-  { name: 'Camila Santos', photos: 889, videos: 106, conversion: 98.2, imageUrl: 'https://i.imgur.com/4AtEyYU.jpeg', isOnline: true, packImages: ['https://i.imgur.com/4AtEyYU.jpeg', 'https://i.imgur.com/4AtEyYU.jpeg', 'https://i.imgur.com/4AtEyYU.jpeg'] },
-  { name: 'Ana Lopes', photos: 760, videos: 88, conversion: 97.5, imageUrl: 'https://i.imgur.com/7zr5mSMl.png', packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/vl5v8a4m42-1751383637200.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/qmiensm86z-1751383637929.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/1v7uoib911o-1751383638587.jpg'] },
-  { name: 'Júlia Lima', photos: 920, videos: 112, conversion: 99.1, imageUrl: 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/mmj8ypxqq2e-1751383057848.jpg', isOnline: true, packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/mmj8ypxqq2e-1751383057848.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/80t57q6d1xg-1751383056952.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/fr78twyo38f-1751383058813.jpg'] },
-  { name: 'Larissa Melo', photos: 815, videos: 97, conversion: 96.4, imageUrl: 'https://i.imgur.com/Tr56Oryl.png', packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/8sgda2i9um9-1751278270254.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/q6fluga2rfp-1751278270645.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/86a79soufb6-1751278270988.jpg'] },
-  { name: 'Bianca Cruz', photos: 780, videos: 102, conversion: 97.8, imageUrl: 'https://i.imgur.com/mkCX0mfl.png', isOnline: true, packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/ho9kwoo86eb-1751277806803.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/1ez64zpyr3z-1751277807708.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/2alew6qocin-1751277807178.jpg'] },
-  { name: 'Natália Reis', photos: 833, videos: 93, conversion: 98.6, imageUrl: 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/zjeoj717djh-1751277524013.jpg', packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/zjeoj717djh-1751277524013.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/ao6ww5idoio-1751277524375.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/8bwu20snd0f-1751277524965.jpg'] },
-  { name: 'Rebeca Martins', photos: 802, videos: 84, conversion: 95.2, imageUrl: 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/lmgob08qp7-1751277203698.jpg', isOnline: true, packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/lmgob08qp7-1751277203698.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/xloc5te405f-1751277203930.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/wjj6goimdri-1751277203336.jpg'] },
-  { name: 'Vanessa Silva', photos: 945, videos: 120, conversion: 99.8, imageUrl: 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/dqk2c1kbvrp-1751276273384.jpg', isOnline: true, packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/dqk2c1kbvrp-1751276273384.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/0qu2ree3u1q9-1751276273613.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/locp2dxsqpd-1751276273802.jpg'] },
-  { name: 'Isabela Rocha', photos: 879, videos: 100, conversion: 96.9, imageUrl: 'https://i.imgur.com/kKyoKlql.png', packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/oy41ktrauli-1751275862262.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/ujiqv4kl68-1751275861850.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/7e6sl688j1b-1751275862692.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/e8bl4h2on5i-1751275861295.png'] },
-];
-
-const moreModels: Model[] = [
-  { name: 'Estela Alves', photos: 850, videos: 90, conversion: 97.0, imageUrl: 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/i23zez97tj-1751260601358.jpeg', isOnline: true, packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/h3684eur4ai-1751260601927.jpeg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/yncgt3tn4ds-1751260602534.jpeg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/80sf89djkf-1751260602882.jpeg'] },
-  { name: 'Bianka Gazaki', photos: 820, videos: 85, conversion: 96.5, imageUrl: 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/jscr7iq8lmb-1751260334656.jpg', packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/y13lelnqd7-1751260336294.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/149cw2o8acql-1751260336932.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/jscr7iq8lmb-1751260334656.jpg'] },
-  { name: 'Ana Silva', photos: 880, videos: 110, conversion: 98.8, imageUrl: 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/ztv0i1earj-1751259945544.png', isOnline: true, packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/i3luzle1zwi-1751259946177.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/nmhx71sa5z-1751259946449.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/pukge39r83-1751259946764.jpeg'] },
-  { name: 'Helena Ferreira', photos: 790, videos: 80, conversion: 95.9, imageUrl: 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/zvsok521t5l-1751259600885.jpg', packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/l9r9x06532-1751259602247.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/mi4wel7v8ia-1751259601598.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/ny8o3odtxrp-1751259601918.jpg'] },
-  { name: 'Isabella Rossi', photos: 910, videos: 115, conversion: 99.3, imageUrl: 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/89d8ulb8bpl-1751259289336.jpg', isOnline: true, packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/4p5afnfmw74-1751259290228.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/offy4vltnkq-1751259290495.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/7imasuzeg0f-1751259290982.jpg'] },
-  { name: 'Sofia Laurent', photos: 860, videos: 95, conversion: 97.8, imageUrl: 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/fa2r277kgeu-1751259107140.jpg', packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/dozdy4w67nv-1751259108664.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/zvwy8t0zo7-1751259107684.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/312ldbfwqq-1751259108041.jpg'] },
-  { name: 'Carol Moraes', photos: 890, videos: 100, conversion: 98.1, imageUrl: 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/oo9ohl2veu9-1751258179497.jpg', isOnline: true, packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/h059p6w20xv-1751258180684.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/bdyeqfxt4r-1751258181140.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/4ycu9iy36o-1751258180066.jpg'] },
-  { name: 'Eliane Figueiredo', photos: 840, videos: 88, conversion: 96.2, imageUrl: 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/ylice86m91s-1751221143337.jpg', isOnline: true, packImages: ['https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/0bbn2pgvo8q-1751221143992.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/w8ptgqe5vxe-1751221144395.jpg', 'https://zyrkaapjgzaqrzjplyeq.supabase.co/storage/v1/object/public/uploads/images/x1noy9cm37-1751221144819.jpg'] },
-]
 
 const PackModal = ({ model, onClose }: { model: Model; onClose: () => void }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -118,7 +86,7 @@ const PackModal = ({ model, onClose }: { model: Model; onClose: () => void }) =>
             </div>
           </div>
           
-          <Link href="/chat" className="w-full">
+          <Link href={`/chat?model=${encodeURIComponent(model.name)}`} className="w-full">
             <Button size="lg" className="w-full bg-green-500 hover:bg-green-600 text-black font-bold text-base h-14">
               <MessageCircle className="mr-2"/> Conversar Agora
             </Button>
@@ -178,7 +146,7 @@ const ModelCard = ({ model, onVerPackClick }: { model: Model, onVerPackClick: ()
         >
           <Folder size={16} /> Ver Pack
         </button>
-        <Link href="/chat" className="flex-1">
+        <Link href={`/chat?model=${encodeURIComponent(model.name)}`} className="flex-1">
           <button className="w-full bg-green-400 text-black py-3 px-4 rounded-lg font-bold text-sm flex items-center justify-center gap-2">
             <MessageCircle size={16} /> Conversar
           </button>
@@ -240,5 +208,3 @@ export default function Home() {
     </main>
   );
 }
-
-    
