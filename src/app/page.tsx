@@ -1,10 +1,10 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Folder, MessageCircle, Camera, Video, TrendingUp, ChevronLeft, ChevronRight, X, Star, CheckCircle2 } from 'lucide-react';
+import { Folder, MessageCircle, Camera, Video, TrendingUp, ChevronLeft, ChevronRight, X, Star, CheckCircle2, MapPin } from 'lucide-react';
 import { ParticlesBackground } from '@/components/particles-background';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,23 @@ import { type Model, models, moreModels } from '@/lib/models';
 
 const PackModal = ({ model, onClose }: { model: Model; onClose: () => void }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [city, setCity] = useState('...'); // Loading state
+
+  useEffect(() => {
+    fetch('https://ipinfo.io/json')
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.city) {
+          setCity(data.city);
+        } else {
+          setCity('sua região');
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching location:', error);
+        setCity('sua região');
+      });
+  }, []); // Run only on mount
 
   if (!model.packImages || model.packImages.length === 0) {
     return null;
@@ -63,6 +80,13 @@ const PackModal = ({ model, onClose }: { model: Model; onClose: () => void }) =>
         {/* --- LEFT COLUMN / BOTTOM ON MOBILE: DETAILS --- */}
         <div className="w-full md:w-[45%] p-6 flex flex-1 flex-col gap-5 overflow-y-auto min-h-0">
           <h2 className="text-3xl font-extrabold">{model.name}</h2>
+          
+          <div className="flex items-center gap-2 text-gray-400 -mt-4">
+            <MapPin size={16} className="text-red-400 flex-shrink-0" />
+            <span>
+              Perto de você em <span className="font-bold text-white">{city}</span>
+            </span>
+          </div>
           
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-[#1f2128] p-4 rounded-xl text-center border border-gray-700/50 shadow-lg shadow-black/20">
