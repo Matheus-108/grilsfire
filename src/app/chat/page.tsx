@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, Suspense } from 'react';
@@ -16,7 +15,6 @@ function ChatPageContent() {
   const searchParams = useSearchParams();
   const modelName = searchParams.get('model');
   const allModels = getAllModels();
-  // Fallback to the first model if no name is provided or the model is not found
   const [model, setModel] = useState<Model>(getModelByName(modelName || '') || allModels[0]);
   
   const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
@@ -32,7 +30,7 @@ function ChatPageContent() {
   
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      // For security, check origin in a production app like this:
+      // Opcional, mas recomendado: verificar a origem do evento por segurança
       // if (event.origin !== 'https://typebot.io') return;
       
       if (event.data === 'openPaymentModal-12') {
@@ -42,10 +40,11 @@ function ChatPageContent() {
 
     window.addEventListener('message', handleMessage);
 
+    // Limpeza do evento ao desmontar o componente
     return () => {
       window.removeEventListener('message', handleMessage);
     };
-  }, []);
+  }, []); // O array de dependências vazio garante que isso rode apenas uma vez
 
   const copyToClipboard = (text: string, successMessage: string) => {
     navigator.clipboard.writeText(text);
@@ -64,7 +63,6 @@ function ChatPageContent() {
     router.push(`/success?model=${encodeURIComponent(model.name)}`);
   };
 
-  // Show the full-screen chatbot iframe
   return (
     <div className="w-full h-screen bg-background">
       <iframe
@@ -72,6 +70,7 @@ function ChatPageContent() {
         width="100%"
         height="100%"
         style={{ border: 'none' }}
+        title="Chatbot"
       ></iframe>
       
       <Dialog open={isPaymentModalOpen} onOpenChange={setPaymentModalOpen}>
