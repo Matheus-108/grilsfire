@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, Suspense } from 'react';
@@ -33,7 +34,7 @@ function ChatPageContent() {
       // Opcional, mas recomendado: verificar a origem do evento por segurança
       // if (event.origin !== 'https://typebot.io') return;
       
-      if (event.data === 'openPaymentModal-12') {
+      if (event.data === 'openPaymentModal-6') {
         setPaymentModalOpen(true);
       }
     };
