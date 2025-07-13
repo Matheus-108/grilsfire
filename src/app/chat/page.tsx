@@ -34,7 +34,7 @@ function ChatContent() {
     const handleMessage = (event: MessageEvent) => {
       // For security, check origin in a production app
       // if (event.origin !== 'https://typebot.io') return;
-
+      
       if (event.data === 'openPaymentModal-12') {
         setPaymentModalOpen(true);
       }
