@@ -35,7 +35,7 @@ function ChatContent() {
       // For security, check origin in a production app
       // if (event.origin !== 'https://typebot.io') return;
 
-      if (event.data === 'showPaymentModal') {
+      if (event.data === 'openPaymentModal-12') {
         setPaymentModalOpen(true);
       }
     };
