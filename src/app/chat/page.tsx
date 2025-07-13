@@ -11,7 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import { getModelByName, getAllModels } from '@/lib/models';
 import type { Model } from '@/lib/models';
 
-function ChatContent() {
+function ChatPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const modelName = searchParams.get('model');
@@ -32,7 +32,7 @@ function ChatContent() {
   
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      // For security, check origin in a production app
+      // For security, check origin in a production app like this:
       // if (event.origin !== 'https://typebot.io') return;
       
       if (event.data === 'openPaymentModal-12') {
@@ -159,7 +159,7 @@ function ChatContent() {
 export default function ChatPage() {
   return (
     <Suspense fallback={<div className="w-full h-screen bg-background flex items-center justify-center">Carregando...</div>}>
-      <ChatContent />
+      <ChatPageContent />
     </Suspense>
   );
 }
