@@ -32,11 +32,11 @@ function ChatPageContent() {
   
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      // Segurança: opcionalmente, verifique a origem do evento
-      // if (event.origin !== 'https://typebot.io') return;
+      // Segurança: Verifique a origem do evento
+      if (event.origin !== 'https://typebot.io') return;
       
       if (event.data === 'openPaymentModal-6') {
-        console.log("Received openPaymentModal-6 event. Opening modal.");
+        console.log("Received openPaymentModal-6 event from typebot.io. Opening modal.");
         setPaymentModalOpen(true);
       }
     };
