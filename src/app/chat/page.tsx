@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useRef } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
@@ -21,6 +21,7 @@ function ChatPageContent() {
   const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
   const [pixCode, setPixCode] = useState('');
   const { toast } = useToast();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const paymentDetails = 'suportepro29@gmail.com'; // As defined in the AI prompt
 
@@ -31,14 +32,16 @@ function ChatPageContent() {
   
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      // Opcional, mas recomendado: verificar a origem do evento por segurança
+      // Segurança: opcionalmente, verifique a origem do evento
       // if (event.origin !== 'https://typebot.io') return;
       
       if (event.data === 'openPaymentModal-6') {
+        console.log("Received openPaymentModal-6 event. Opening modal.");
         setPaymentModalOpen(true);
       }
     };
-
+    
+    // Adiciona o listener de mensagens
     window.addEventListener('message', handleMessage);
 
     // Limpeza do evento ao desmontar o componente
@@ -67,6 +70,7 @@ function ChatPageContent() {
   return (
     <div className="w-full h-screen bg-background">
       <iframe
+        ref={iframeRef}
         src="https://typebot.io/funil-isa-64b8rfv"
         width="100%"
         height="100%"
