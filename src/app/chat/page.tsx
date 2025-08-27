@@ -35,8 +35,10 @@ function ChatPageContent() {
       // Segurança: Verifique a origem do evento
       if (event.origin !== 'https://typebot.io') return;
       
+      console.log("Received message from origin:", event.origin, "with data:", event.data);
+
       if (event.data === 'openPaymentModal-6') {
-        console.log("Received openPaymentModal-6 event from typebot.io. Opening modal.");
+        console.log("Received openPaymentModal-6 event. Opening modal.");
         setPaymentModalOpen(true);
       }
     };
