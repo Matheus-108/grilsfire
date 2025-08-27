@@ -37,8 +37,8 @@ function ChatPageContent() {
       
       console.log("Received message from origin:", event.origin, "with data:", event.data);
 
-      if (event.data === 'openPaymentModal-6') {
-        console.log("Received openPaymentModal-6 event. Opening modal.");
+      if (event.data === 'openPaymentModal-1') {
+        console.log("Received openPaymentModal-1 event. Opening modal.");
         setPaymentModalOpen(true);
       }
     };
