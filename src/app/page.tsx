@@ -298,18 +298,6 @@ const VideoFeed = () => (
   </div>
 );
 
-const AppFooter = () => (
-   <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/90 to-transparent p-4 z-20">
-    <div className="max-w-7xl mx-auto">
-       <Link href={`/chat?model=Letycia`} className="w-full block">
-          <Button size="lg" className="w-full bg-green-500 hover:bg-green-600 text-black font-bold text-lg h-16 shadow-[0_4px_20px_rgba(40,255,40,0.4)]">
-            <PlayCircle className="mr-2" /> Comprar Acesso Agora
-          </Button>
-        </Link>
-    </div>
-  </div>
-)
-
 export default function Home() {
   const [selectedModel, setSelectedModel] = useState<Model | null>(null);
   const [showMore, setShowMore] = useState(false);
@@ -408,7 +396,6 @@ export default function Home() {
 
       </div>
       {selectedModel && <PackModal model={selectedModel} onClose={() => setSelectedModel(null)} />}
-      <AppFooter />
     </main>
   );
 }
