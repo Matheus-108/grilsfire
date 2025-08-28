@@ -206,6 +206,14 @@ const reviews: Review[] = [
     text: 'parada é ótima comprei e baixei e nao me arrependo de nada, nao gasto mais dinheiro com privacy nem com grupo no telegram, todas as mulheres que eu aocmpanho estao dentro desse app fodaaaa',
     usefulCount: 38,
   },
+  {
+    avatar: 'https://i.imgur.com/8f2c3pE.png',
+    name: 'David S. Mattos',
+    date: '17 de junho de 2025',
+    rating: 5,
+    text: 'Finalmente encontrei um aplicativo que tudo o que eu sempre quis, mulheres videos e lives pagando só uma vez! nunca mais enjoei das mulheres que eu comprava packa, pq no app tem centenas ou milhares de mulheres, nao paraaaa de aparecerrr so cavalonaaa',
+    usefulCount: 1168,
+  }
 ];
 
 
