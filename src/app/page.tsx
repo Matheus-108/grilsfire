@@ -268,7 +268,7 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <div className="relative flex-shrink-0">
               <Image 
-                src="https://i.imgur.com/gB34N3n.jpeg" 
+                src="https://i.imgur.com/s6JHF7A.png" 
                 alt="Ícone do App" 
                 width={80} 
                 height={80} 
