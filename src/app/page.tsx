@@ -258,7 +258,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
 const VideoFeed = () => (
   <div className="relative w-full max-w-sm mx-auto aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl shadow-red-500/30 border-2 border-gray-700 my-8">
     <Image 
-      src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExejNwd2N5bGRyN2Jta2l2cGtoYjBlaTJrdmlua3R1anJzYjU5d25iZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kC392f2G5pC3m/giphy.gif"
+      src="https://i.imgur.com/5O0L3b8.png"
       alt="Video feed"
       layout="fill"
       objectFit="cover"
@@ -399,3 +399,5 @@ export default function Home() {
     </main>
   );
 }
+
+    
