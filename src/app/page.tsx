@@ -299,7 +299,7 @@ export default function Home() {
               <div className="absolute -bottom-2 -right-2 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-md border-2 border-[#1a1a1a]">18+</div>
             </div>
             <div className="text-left">
-              <h2 className="text-xl font-bold text-white">Tiktok Adulto APP</h2>
+              <h2 className="text-xl font-bold text-white">Solteiras da Cidade</h2>
               <p className="text-green-400 font-semibold text-sm">Acesso ao Conteúdo Adulto</p>
               <p className="text-gray-400 text-xs mt-1">Contém compras no app</p>
             </div>
