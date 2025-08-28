@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Folder, MessageCircle, Camera, Video, TrendingUp, ChevronLeft, ChevronRight, X, Star, CheckCircle2, MapPin, Download, AlertCircle, ThumbsUp, ThumbsDown, MoreVertical, Heart } from 'lucide-react';
+import { Folder, MessageCircle, Camera, Video, TrendingUp, ChevronLeft, ChevronRight, X, Star, CheckCircle2, MapPin, Download, AlertCircle, ThumbsUp, ThumbsDown, MoreVertical, Heart, Search, HelpCircle, CircleUser } from 'lucide-react';
 import { ParticlesBackground } from '@/components/particles-background';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -255,6 +255,25 @@ const ReviewCard = ({ review }: { review: Review }) => {
   );
 };
 
+const PlayStoreHeader = () => (
+  <header className="bg-[#1f2128] px-4 py-3 flex items-center justify-between border-b border-gray-700/50">
+    <div className="flex items-center gap-3">
+      <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 6V42L22.5 24L6 6Z" fill="#00A0F3"/>
+        <path d="M33 15L22.5 24L33 33L42 28.5V19.5L33 15Z" fill="#FFC900"/>
+        <path d= "M6 6L22.5 24L33 15L19.5 7.5L6 6Z" fill="#00E57C"/>
+        <path d="M6 42L19.5 40.5L33 33L22.5 24L6 42Z" fill="#FF3D00"/>
+      </svg>
+      <span className="text-xl font-bold text-gray-200">Google Play</span>
+    </div>
+    <div className="flex items-center gap-4 text-gray-400">
+      <Search size={22} className="cursor-pointer hover:text-white" />
+      <HelpCircle size={22} className="cursor-pointer hover:text-white" />
+      <CircleUser size={26} className="cursor-pointer hover:text-white" />
+    </div>
+  </header>
+);
+
 export default function Home() {
   const [selectedModel, setSelectedModel] = useState<Model | null>(null);
   const [showMore, setShowMore] = useState(false);
@@ -264,7 +283,9 @@ export default function Home() {
       <ParticlesBackground />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center relative z-10">
         
-        <div className="max-w-md mx-auto bg-[#1a1a1a] rounded-2xl p-4 md:p-6 border border-gray-700/50 shadow-lg shadow-black/20 mb-12">
+        <PlayStoreHeader />
+
+        <div className="max-w-md mx-auto bg-[#1a1a1a] rounded-b-2xl p-4 md:p-6 border-x border-b border-gray-700/50 shadow-lg shadow-black/20 mb-12">
           <div className="flex items-center gap-4">
             <div className="relative flex-shrink-0">
               <Image 
@@ -354,5 +375,3 @@ export default function Home() {
     </main>
   );
 }
-
-    
