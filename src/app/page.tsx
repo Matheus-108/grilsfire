@@ -238,13 +238,6 @@ export default function Home() {
           </div>
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-red-500 to-orange-400 bg-clip-text text-transparent mt-5">
-          Garotas Reais, Agora Mesmo — Online e Prontas Pra Conversar
-        </h1>
-        <p className="text-lg text-gray-300 max-w-3xl mx-auto mt-4 mb-10">
-          Descubra quem está disponível na sua região e comece a trocar mensagens em segundos. Sem burocracia, sem enrolação. Apenas cliques reais e conversas diretas.
-        </p>
-        
         <div className="flex justify-center flex-wrap gap-x-8 gap-y-4 mb-12">
           <div className="text-lg font-semibold text-green-400">🟢 94 Garotas Online</div>
           <div className="text-lg font-semibold text-purple-400">✨ 12 Novas Hoje</div>
