@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Folder, MessageCircle, Camera, Video, TrendingUp, ChevronLeft, ChevronRight, X, Star, CheckCircle2, MapPin, Download, AlertCircle } from 'lucide-react';
+import { Folder, MessageCircle, Camera, Video, TrendingUp, ChevronLeft, ChevronRight, X, Star, CheckCircle2, MapPin, Download, AlertCircle, ThumbsUp, ThumbsDown, MoreVertical } from 'lucide-react';
 import { ParticlesBackground } from '@/components/particles-background';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -180,6 +180,74 @@ const ModelCard = ({ model, onVerPackClick }: { model: Model, onVerPackClick: ()
   </div>
 );
 
+type Review = {
+  avatar: string;
+  name: string;
+  date: string;
+  rating: number;
+  text: string;
+  usefulCount: number;
+};
+
+const reviews: Review[] = [
+  {
+    avatar: 'https://i.imgur.com/nC4hFAx.png',
+    name: 'Juliano Gomes',
+    date: '26 de março de 2025',
+    rating: 5,
+    text: 'podem baixar que e massa de mais uso o dia todo pq estou nas ferias do meu trabalho puts tem que ver as minas so gata slk',
+    usefulCount: 143,
+  },
+  {
+    avatar: 'https://i.imgur.com/sC4a8A2.png',
+    name: 'Sergio Falles',
+    date: '14 de junho de 2025',
+    rating: 5,
+    text: 'parada é ótima comprei e baixei e nao me arrependo de nada, nao gasto mais dinheiro com privacy nem com grupo no telegram, todas as mulheres que eu aocmpanho estao dentro desse app fodaaaa',
+    usefulCount: 38,
+  },
+];
+
+
+const ReviewCard = ({ review }: { review: Review }) => {
+  return (
+    <div className="bg-[#1a1a1a] p-5 rounded-xl border border-gray-700/50 shadow-lg shadow-black/20">
+      <div className="flex justify-between items-start mb-3">
+        <div className="flex items-center gap-3">
+          <Image src={review.avatar} alt={review.name} width={40} height={40} className="rounded-full" data-ai-hint="person avatar" />
+          <div>
+            <h4 className="font-bold text-white text-base">{review.name}</h4>
+            <div className="flex items-center gap-2 mt-1">
+              <div className="flex items-center">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={16} className={i < review.rating ? 'text-green-400 fill-green-400' : 'text-gray-600'} />
+                ))}
+              </div>
+              <p className="text-xs text-gray-400">{review.date}</p>
+            </div>
+          </div>
+        </div>
+        <button className="text-gray-500 hover:text-white">
+          <MoreVertical size={20} />
+        </button>
+      </div>
+      
+      <p className="text-gray-300 text-sm leading-relaxed mb-4">{review.text}</p>
+      
+      <p className="text-xs text-gray-500 mb-3">{`Essa avaliação foi marcada como útil por ${review.usefulCount} pessoas`}</p>
+
+      <div className="flex items-center gap-4">
+        <span className="text-sm text-gray-400">Você achou isso útil?</span>
+        <div className="flex items-center gap-2">
+           <Button variant="outline" size="sm" className="bg-transparent border-gray-600 hover:bg-gray-700 text-white h-8 px-4 text-sm">Sim</Button>
+           <Button variant="outline" size="sm" className="bg-transparent border-gray-600 hover:bg-gray-700 text-white h-8 px-4 text-sm">Não</Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
 export default function Home() {
   const [selectedModel, setSelectedModel] = useState<Model | null>(null);
   const [showMore, setShowMore] = useState(false);
@@ -264,6 +332,15 @@ export default function Home() {
             </p>
           </div>
         )}
+
+        <div className="mt-20">
+          <h2 className="text-3xl font-bold mb-4 text-left">Avaliações Recentes</h2>
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {reviews.map(review => (
+              <ReviewCard key={review.name} review={review} />
+            ))}
+          </div>
+        </div>
 
       </div>
       {selectedModel && <PackModal model={selectedModel} onClose={() => setSelectedModel(null)} />}
