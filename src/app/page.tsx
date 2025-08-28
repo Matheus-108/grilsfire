@@ -334,6 +334,23 @@ export default function Home() {
           </div>
         </div>
 
+        <div className="mb-12">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+                Nosso Catálogo de <span className="text-green-400">Modelos</span>
+            </h2>
+            <div className="relative p-2 rounded-xl bg-gradient-to-br from-green-500/20 via-transparent to-transparent">
+                <Image 
+                    src="https://i.imgur.com/6hRVe4u.png"
+                    alt="Demonstração do produto"
+                    width={1200}
+                    height={675}
+                    className="rounded-lg shadow-2xl shadow-green-500/20 w-full"
+                    data-ai-hint="profiles collage"
+                />
+            </div>
+        </div>
+
+
         <div className="flex justify-center flex-wrap gap-x-8 gap-y-4 mb-12">
           <div className="text-lg font-semibold text-green-400">🟢 94 Garotas Online</div>
           <div className="text-lg font-semibold text-purple-400">✨ 12 Novas Hoje</div>
