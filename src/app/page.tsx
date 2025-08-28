@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Folder, MessageCircle, Camera, Video, TrendingUp, ChevronLeft, ChevronRight, X, Star, CheckCircle2, MapPin } from 'lucide-react';
+import { Folder, MessageCircle, Camera, Video, TrendingUp, ChevronLeft, ChevronRight, X, Star, CheckCircle2, MapPin, Download, AlertCircle } from 'lucide-react';
 import { ParticlesBackground } from '@/components/particles-background';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -188,6 +188,56 @@ export default function Home() {
     <main className="bg-[#0d0d0d] text-white font-sans min-h-screen relative overflow-hidden">
       <ParticlesBackground />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center relative z-10">
+        
+        <div className="max-w-md mx-auto bg-[#1a1a1a] rounded-2xl p-4 md:p-6 border border-gray-700/50 shadow-lg shadow-black/20 mb-12">
+          <div className="flex items-center gap-4">
+            <div className="relative flex-shrink-0">
+              <Image 
+                src="https://i.imgur.com/3dxHzSt.jpeg" 
+                alt="Ícone do App" 
+                width={80} 
+                height={80} 
+                className="rounded-xl border-2 border-gray-700" 
+                data-ai-hint="app icon"
+              />
+              <div className="absolute -bottom-2 -right-2 bg-red-600 text-white text-xs font-bold px-1.5 py-0.5 rounded-md border-2 border-[#1a1a1a]">18+</div>
+            </div>
+            <div className="text-left">
+              <h2 className="text-xl font-bold text-white">Letycia +18</h2>
+              <p className="text-green-400 font-semibold text-sm">Acesso ao Conteúdo Adulto</p>
+              <p className="text-gray-400 text-xs mt-1">Contém compras no app</p>
+            </div>
+          </div>
+          
+          <div className="flex justify-around text-center my-6">
+            <div>
+              <p className="text-sm font-bold flex items-center justify-center gap-1">5.0 <Star size={14} className="text-amber-400" fill="currentColor" /></p>
+              <p className="text-xs text-gray-400">125 mil avaliações</p>
+            </div>
+            <div>
+              <p className="text-sm font-bold flex items-center justify-center gap-1"><Download size={14} /> 800 mil+</p>
+              <p className="text-xs text-gray-400">downloads</p>
+            </div>
+            <div>
+              <div className="text-sm font-bold border border-gray-500 px-2 py-0.5 rounded-sm inline-block">18</div>
+              <p className="text-xs text-gray-400 mt-1">Classificação</p>
+            </div>
+          </div>
+
+          <Link href={`/chat?model=Letycia`} className="w-full block">
+            <Button size="lg" className="w-full bg-green-500 hover:bg-green-600 text-black font-bold text-base h-14">
+              Comprar Acesso - R$ 19,90
+            </Button>
+          </Link>
+          
+          <div className="flex items-start text-left gap-2 mt-4 text-red-400 bg-red-500/10 p-3 rounded-lg border border-red-500/20">
+            <AlertCircle size={24} className="flex-shrink-0 mt-0.5" />
+            <p className="text-xs font-semibold">
+              Este aplicativo só é oferecido uma vez por pessoa. Se você fechar essa página, você não terá a oportunidade de adquirir de novo.
+            </p>
+          </div>
+        </div>
+
         <header className="flex justify-between items-center mb-8">
           <h2 className="text-2xl font-bold text-red-500">GirlFinder 💬</h2>
           <button className="bg-[#333] text-white py-2 px-5 rounded-lg font-semibold">Entrar</button>
