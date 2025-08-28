@@ -258,7 +258,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
 const VideoFeed = () => (
   <div className="relative w-full max-w-sm mx-auto aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl shadow-red-500/30 border-2 border-gray-700 my-8">
     <Image 
-      src="https://i.imgur.com/5O0L3b8.png"
+      src="https://i.imgur.com/DDAzojm.png"
       alt="Video feed"
       layout="fill"
       objectFit="cover"
@@ -399,5 +399,3 @@ export default function Home() {
     </main>
   );
 }
-
-    
