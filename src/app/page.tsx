@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Folder, MessageCircle, Camera, Video, TrendingUp, ChevronLeft, ChevronRight, X, Star, CheckCircle2, MapPin, Download, AlertCircle, ThumbsUp, ThumbsDown, MoreVertical } from 'lucide-react';
+import { Folder, MessageCircle, Camera, Video, TrendingUp, ChevronLeft, ChevronRight, X, Star, CheckCircle2, MapPin, Download, AlertCircle, ThumbsUp, ThumbsDown, MoreVertical, Heart, Music, PlayCircle } from 'lucide-react';
 import { ParticlesBackground } from '@/components/particles-background';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -255,13 +255,67 @@ const ReviewCard = ({ review }: { review: Review }) => {
   );
 };
 
+const VideoFeed = () => (
+  <div className="relative w-full max-w-sm mx-auto aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl shadow-red-500/30 border-2 border-gray-700 my-8">
+    <Image 
+      src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExejNwd2N5bGRyN2Jta2l2cGtoYjBlaTJrdmlua3R1anJzYjU5d25iZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kC392f2G5pC3m/giphy.gif"
+      alt="Video feed"
+      layout="fill"
+      objectFit="cover"
+      className="w-full h-full"
+      unoptimized
+      data-ai-hint="woman dancing"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
+    <div className="absolute top-0 left-0 right-0 p-4 text-center">
+      <h3 className="text-white text-lg font-bold text-shadow-lg">Comprovado: O APP CUMPRE O QUE PROMETE!</h3>
+    </div>
+    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+      <div className="flex justify-between items-end">
+        <div className="flex-1">
+          <h4 className="font-bold">@tiktok_adulto_app</h4>
+          <p className="text-sm">Só aqui você tem acesso a tudo... 🔥</p>
+          <div className="flex items-center gap-2 text-sm mt-1">
+            <Music size={16} />
+            <span>Som Original - As Melhores</span>
+          </div>
+        </div>
+        <div className="flex flex-col items-center gap-4">
+          <button className="flex flex-col items-center gap-1">
+            <Image src="https://i.imgur.com/3dxHzSt.jpeg" alt="Ícone do App" width={48} height={48} className="rounded-full border-2 border-white" data-ai-hint="app icon" />
+          </button>
+          <button className="flex flex-col items-center gap-1">
+            <Heart size={32} className="text-red-500 fill-current" />
+            <span className="text-xs font-bold">1.2M</span>
+          </button>
+          <button className="flex flex-col items-center gap-1">
+            <MessageCircle size={32} />
+            <span className="text-xs font-bold">18.7K</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const AppFooter = () => (
+   <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/90 to-transparent p-4 z-20">
+    <div className="max-w-7xl mx-auto">
+       <Link href={`/chat?model=Letycia`} className="w-full block">
+          <Button size="lg" className="w-full bg-green-500 hover:bg-green-600 text-black font-bold text-lg h-16 shadow-[0_4px_20px_rgba(40,255,40,0.4)]">
+            <PlayCircle className="mr-2" /> Comprar Acesso Agora
+          </Button>
+        </Link>
+    </div>
+  </div>
+)
 
 export default function Home() {
   const [selectedModel, setSelectedModel] = useState<Model | null>(null);
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <main className="bg-[#0d0d0d] text-white font-sans min-h-screen relative overflow-hidden">
+    <main className="bg-[#0d0d0d] text-white font-sans min-h-screen relative overflow-hidden pb-24">
       <ParticlesBackground />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center relative z-10">
         
@@ -320,6 +374,8 @@ export default function Home() {
           <div className="text-lg font-semibold text-green-400">💬 100% Interações Reais</div>
         </div>
 
+        <VideoFeed />
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {models.map(model => (
             <ModelCard key={model.name} model={model} onVerPackClick={() => setSelectedModel(model)} />
@@ -352,6 +408,9 @@ export default function Home() {
 
       </div>
       {selectedModel && <PackModal model={selectedModel} onClose={() => setSelectedModel(null)} />}
+      <AppFooter />
     </main>
   );
 }
+
+    
