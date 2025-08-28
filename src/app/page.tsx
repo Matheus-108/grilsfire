@@ -311,7 +311,7 @@ export default function Home() {
               <p className="text-xs text-gray-400">125 mil avaliações</p>
             </div>
             <div>
-              <p className="text-sm font-bold flex items-center justify-center gap-1"><Download size={14} /> 800 mil+</p>
+              <p className="text-sm font-bold flex items-center justify-center gap-1"><Download size={14} /> 1200</p>
               <p className="text-xs text-gray-400">downloads</p>
             </div>
             <div>
