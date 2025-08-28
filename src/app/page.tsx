@@ -238,11 +238,6 @@ export default function Home() {
           </div>
         </div>
 
-        <header className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-bold text-red-500">GirlFinder 💬</h2>
-          <button className="bg-[#333] text-white py-2 px-5 rounded-lg font-semibold">Entrar</button>
-        </header>
-
         <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-red-500 to-orange-400 bg-clip-text text-transparent mt-5">
           Garotas Reais, Agora Mesmo — Online e Prontas Pra Conversar
         </h1>
