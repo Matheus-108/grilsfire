@@ -177,7 +177,7 @@ type Review = {
 
 const reviews: Review[] = [
   {
-    avatar: 'https://i.imgur.com/nC4hFAx.png',
+    avatar: 'https://i.imgur.com/V26tUvI.png',
     name: 'Juliano Gomes',
     date: '26 de março de 2025',
     rating: 5,
@@ -185,7 +185,7 @@ const reviews: Review[] = [
     usefulCount: 143,
   },
   {
-    avatar: 'https://i.imgur.com/sC4a8A2.png',
+    avatar: 'https://i.imgur.com/V26tUvI.png',
     name: 'Sergio Falles',
     date: '14 de junho de 2025',
     rating: 5,
@@ -193,7 +193,7 @@ const reviews: Review[] = [
     usefulCount: 38,
   },
   {
-    avatar: 'https://i.imgur.com/8f2c3pE.png',
+    avatar: 'https://i.imgur.com/V26tUvI.png',
     name: 'David S. Mattos',
     date: '17 de junho de 2025',
     rating: 5,
