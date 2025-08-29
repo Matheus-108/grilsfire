@@ -277,6 +277,24 @@ const PlayStoreHeader = () => (
 export default function Home() {
   const [selectedModel, setSelectedModel] = useState<Model | null>(null);
   const [showMore, setShowMore] = useState(false);
+  const [city, setCity] = useState('...'); // Loading state
+
+  useEffect(() => {
+    // Fetch location only on the client-side
+    fetch('https://ipinfo.io/json')
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.city) {
+          setCity(data.city);
+        } else {
+          setCity('sua região');
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching location:', error);
+        setCity('sua região');
+      });
+  }, []); // Empty dependency array ensures this runs once on mount
 
   return (
     <main className="bg-[#0d0d0d] text-white font-sans min-h-screen relative overflow-hidden pb-24">
@@ -300,7 +318,12 @@ export default function Home() {
             </div>
             <div className="text-left">
               <h2 className="text-xl font-bold text-white">Solteiras da Cidade</h2>
-              <p className="text-green-400 font-semibold text-sm">Acesso ao Conteúdo Adulto</p>
+              <div className="flex items-center gap-1.5 text-gray-400 text-sm">
+                <MapPin size={14} className="text-green-400 flex-shrink-0" />
+                <span>
+                  Perto de você em <span className="font-semibold text-white">{city}</span>
+                </span>
+              </div>
               <p className="text-gray-400 text-xs mt-1">Contém compras no app</p>
             </div>
           </div>
