@@ -331,7 +331,7 @@ export default function Home() {
 
           <Link href={`/chat?model=Letycia`} className="w-full block">
             <Button size="lg" className="w-full bg-green-500 hover:bg-green-600 text-black font-bold text-base h-14">
-              Comprar Acesso - R$ 19,90
+              Baixar Agora
             </Button>
           </Link>
           
