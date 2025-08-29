@@ -12,26 +12,9 @@ import { cn } from '@/lib/utils';
 import { type Model, models, moreModels } from '@/lib/models';
 
 
-const PackModal = ({ model, onClose }: { model: Model; onClose: () => void }) => {
+const PackModal = ({ model, city, onClose }: { model: Model; city: string; onClose: () => void }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [city, setCity] = useState('...'); // Loading state
-
-  useEffect(() => {
-    fetch('https://ipinfo.io/json')
-      .then(response => response.json())
-      .then(data => {
-        if (data && data.city) {
-          setCity(data.city);
-        } else {
-          setCity('sua região');
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching location:', error);
-        setCity('sua região');
-      });
-  }, []); // Run only on mount
-
+  
   if (!model.packImages || model.packImages.length === 0) {
     return null;
   }
@@ -136,7 +119,7 @@ const PackModal = ({ model, onClose }: { model: Model; onClose: () => void }) =>
   );
 };
 
-const ModelCard = ({ model, onVerPackClick }: { model: Model, onVerPackClick: () => void }) => (
+const ModelCard = ({ model, onVerPackClick, city }: { model: Model, onVerPackClick: () => void, city: string }) => (
   <div className="relative bg-[#1a1a1a] rounded-xl overflow-hidden shadow-lg shadow-red-500/20 transition-transform duration-300 hover:scale-105 group">
     {model.isOnline && (
       <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 rounded-full bg-black/60 px-2.5 py-1 text-xs font-bold text-white backdrop-blur-sm">
@@ -159,8 +142,11 @@ const ModelCard = ({ model, onVerPackClick }: { model: Model, onVerPackClick: ()
       <div className="text-sm text-gray-400 my-1">
         📸 {model.photos} fotos • 🎥 {model.videos} vídeos
       </div>
-      <div className="text-sm font-bold text-green-400 my-2">
-        📈 {model.conversion}% CONVERSÃO
+       <div className="flex items-center gap-1.5 text-sm text-gray-400 my-2">
+        <MapPin size={14} className="text-red-400 flex-shrink-0" />
+        <span>
+          Perto de você em <span className="font-semibold text-white">{city}</span>
+        </span>
       </div>
       <div className="flex justify-between gap-3 mt-4">
         <button 
@@ -382,10 +368,10 @@ export default function Home() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {models.map(model => (
-            <ModelCard key={model.name} model={model} onVerPackClick={() => setSelectedModel(model)} />
+            <ModelCard key={model.name} model={model} onVerPackClick={() => setSelectedModel(model)} city={city} />
           ))}
           {showMore && moreModels.map(model => (
-            <ModelCard key={model.name} model={model} onVerPackClick={() => setSelectedModel(model)} />
+            <ModelCard key={model.name} model={model} onVerPackClick={() => setSelectedModel(model)} city={city} />
           ))}
         </div>
         
@@ -411,7 +397,7 @@ export default function Home() {
         </div>
 
       </div>
-      {selectedModel && <PackModal model={selectedModel} onClose={() => setSelectedModel(null)} />}
+      {selectedModel && <PackModal model={selectedModel} city={city} onClose={() => setSelectedModel(null)} />}
     </main>
   );
 }
